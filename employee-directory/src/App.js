@@ -1,6 +1,8 @@
 import React, {Component}  from "react";
 import './App.css';
-
+import API from "./utils/API.js";
+import EmployeeTable from "./components/EmployeeTable";
+import SearchBar from "./components/SearchBar";
 
 class App extends Component {
 
@@ -14,11 +16,13 @@ class App extends Component {
 
    componentDidMount() {
 
-    fetch("https://randomuser.me/api/")
-    .then((response) => response.json())
+    // fetch("https://randomuser.me/api/")
+    // .then((response) => response.json())
+    API.getUsers()
     .then((response) => {
+      console.log(response);
       this.setState({
-        items:response.results,
+        items:response.data.results,
         loading:true
       })
     })
@@ -27,32 +31,15 @@ class App extends Component {
 
     //let {items, loading} = this.state
     return (
+      <>
       <div>Employee Directory</div>
+      <SearchBar employees = {this.state.items}/>
+      <EmployeeTable employees = {this.state.items}/>
+     
+      </>
     )
   }
 }
-// import logo from './logo.svg';
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;
