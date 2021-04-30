@@ -14,8 +14,8 @@ function EmployeeTable(props) {
     </tr>
   </thead>
   <tbody>
-      {props.employees.map(employee => (
-          <tr>
+      {props.employees.map((employee, i)=> (
+          <tr key={`employee -${i + 1}`}>
               
               {/* <td>{employee.picture.thumbnail}</td> */}
               <td>{employee.name.first}</td>

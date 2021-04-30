@@ -24,7 +24,8 @@ class App extends Component {
       console.log(response.data.results);
       this.setState({
         items:response.data.results,
-        loading:true
+        loading:true,
+        search: ""
       })
     })
   }
@@ -50,6 +51,19 @@ class App extends Component {
       this.getUsers(this.state.search);
     };
 
+    // handleSort = (key, asc) => {
+    //   // copy
+    //   let friendSorted = [...this.state.friends];
+  
+    //   // sort by key and asc
+    //   friendSorted.sort( (a, b) => {
+    //     return a[key] > b[key] ? asc * 1 : asc * -1;
+    //   });
+  
+    //   // set the state
+    //   this.setState({ friends: friendSorted });
+    // }
+
 
 
   render() {
@@ -58,7 +72,7 @@ class App extends Component {
     return (
       <>
       <div>Employee Directory</div>
-      <SearchBar employees = {this.state.items}/>
+      <SearchBar submit= {this.handleFormSubmit} handleInputChange ={this.handleInputChange}/>
       <EmployeeTable employees = {this.state.items}/>
      
       </>
