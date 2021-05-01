@@ -7,7 +7,7 @@ function EmployeeTable(props) {
   <thead>
     <tr>
       {/* <th img="col">picture</th> */}
-      <th scope="col">First</th>
+      <th scope="col"onClick= {props.sort}>First</th>
       <th scope="col">Last</th>
       <th scope="col">email</th>
       <th scope="col">cell</th>
