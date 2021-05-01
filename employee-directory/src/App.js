@@ -78,7 +78,7 @@ class App extends Component {
     handleSort = (key, asc) => {
       // copy
       let employeeSorted = [...this.state.employees];
-  
+      
       // sort by key and asc
       employeeSorted.sort( (a, b) => {
         return a[key] > b[key] ? asc * 1 : asc * -1;
