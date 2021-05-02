@@ -70,10 +70,7 @@ class App extends Component {
       )
       console.log(filteredEmployees);
        
-      // this.setState({ 
-      //   firstName: "",
-      //   lastName: ""
-      // });
+     
     };
 
     handleSort = (key, asc) => {
@@ -105,7 +102,7 @@ class App extends Component {
     let search = this.state.search.toLowerCase();
    
     filteredEmployees = filteredEmployees.filter(employee => {
-      console.log(employee);
+      //console.log(employee);
       return (
         employee.name.first
         .toLowerCase()
@@ -126,11 +123,11 @@ class App extends Component {
       <>
       <div className="form-control">Employee Directory</div>
    
-      {/* <button onClick={() => this.handleSort("name", 1)}>Push for sort name</button>
-      <button onClick={() => this.handleSort("name", -1)}>Push for sort name reverse</button> */}
+      {/* <button onClick={() => this.handleSort("employee", 1)}>Push for sort name</button>
+      <button onClick={() => this.handleSort("employee", -1)}>Push for sort name reverse</button> */}
       {this.state.items.map}
-      <SearchBar search={this.state.search} submit= {this.handleFormSubmit} handleInputChange ={this.handleInputChange}/>
-      <EmployeeTable search={this.state.search} employees = {filteredEmployees} handleRemove={this.handleRemove}/>
+      <SearchBar search={this.state.search} submit= {this.handleFormSubmit} handleInputChange ={this.handleInputChange} handleSort={this.handleSort}/>
+      <EmployeeTable search={this.state.search} employees = {filteredEmployees} handleRemove={this.handleRemove} handleSort={this.handleSort}/>
      
       </>
     )
