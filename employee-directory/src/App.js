@@ -4,6 +4,7 @@ import API from "./utils/API.js";
 import EmployeeTable from "./components/EmployeeTable";
 import SearchBar from "./components/SearchBar";
 import 'bootstrap/dist/css/bootstrap.css';
+//import './index.css';
 
 
 class App extends Component {
@@ -123,7 +124,7 @@ class App extends Component {
     //let {items, loading} = this.state
     return (
       <>
-      <div>Employee Directory</div>
+      <div className="form-control">Employee Directory</div>
    
       {/* <button onClick={() => this.handleSort("name", 1)}>Push for sort name</button>
       <button onClick={() => this.handleSort("name", -1)}>Push for sort name reverse</button> */}
