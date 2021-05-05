@@ -34,4 +34,4 @@ function EmployeeTable(props) {
     )
 }
 
-export default EmployeeTable
+export default EmployeeTable;

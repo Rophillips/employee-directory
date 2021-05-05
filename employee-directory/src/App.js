@@ -1,4 +1,4 @@
-import React, {Component}  from "react";
+import React, { Component }  from "react";
 import './App.css';
 import API from "./utils/API.js";
 import EmployeeTable from "./components/EmployeeTable";
@@ -9,14 +9,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-
+  // constructor(props){
+  //   super(props)
+    // this.state = {
+   state = {
       items:[],
       loading: false
     }
-   }
+   
 
    componentDidMount() {
 
@@ -75,7 +75,7 @@ class App extends Component {
 
     handleSort = (key, asc) => {
       // copy
-      let employeeSorted = [...this.state.employees];
+      let employeeSorted = [...this.state.items];
       
       // sort by key and asc
       employeeSorted.sort( (a, b) => {
@@ -83,7 +83,20 @@ class App extends Component {
       });
   
       // set the state
-      this.setState({ employees: employeeSorted });
+      this.setState({ items: employeeSorted });
+    }
+
+    handleSort2 = (key, key2, asc) => {
+      // copy
+      let employeeSorted = [...this.state.items];
+      
+      // sort by key and asc
+      employeeSorted.sort( (a, b) => {
+        return a[key][key2] > b[key][key2] ? asc * 1 : asc * -1;
+      });
+  
+      // set the state
+      this.setState({ items: employeeSorted });
     }
 
     handleRemove = id => {
@@ -123,11 +136,11 @@ class App extends Component {
       <>
       <div className="form-control">Employee Directory</div>
    
-      {/* <button onClick={() => this.handleSort("employee", 1)}>Push for sort name</button>
-      <button onClick={() => this.handleSort("employee", -1)}>Push for sort name reverse</button> */}
+      <button onClick={() => this.handleSort2("name", "first", 1)}>Sort Alphabetically by First Name</button>
+      <button onClick={() => this.handleSort2("name", "last", 1)}>Sort Alphabetically by Last Name</button>
       {this.state.items.map}
-      <SearchBar search={this.state.search} submit= {this.handleFormSubmit} handleInputChange ={this.handleInputChange} handleSort={this.handleSort}/>
-      <EmployeeTable search={this.state.search} employees = {filteredEmployees} handleRemove={this.handleRemove} handleSort={this.handleSort}/>
+      <SearchBar search={this.state.search} submit= {this.handleFormSubmit} handleInputChange ={this.handleInputChange} handleSort={this.handleSort} />
+      <EmployeeTable search={this.state.search} employees = {filteredEmployees} handleRemove={this.handleRemove} handleSort={this.handleSort} />
      
       </>
     )
